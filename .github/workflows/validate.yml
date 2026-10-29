@@ -1,0 +1,14 @@
+name: Validate portal assets
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check integrity and initial payload
+        run: python3 tests/check_assets.py
